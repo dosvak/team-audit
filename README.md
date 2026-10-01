@@ -7,7 +7,13 @@ server-side service flows calling the product REST API as a technical user) - no
 
 ## Install
 
-1. Import `packages/Team-Audit-1.0.twx` (Process Center / Workflow Center console: *Import Process App*; CP4BA: Business Automation Studio > *Import*).
+1. Import the package of your platform:
+   * IBM BPM 8.6.2 / IBM BAW 20-26 traditional: `packages/Team-Audit-1.0.twx` (Process Center / Workflow Center console: *Import Process App*);
+   * CP4BA (Business Automation Studio > *Import*): `packages/Team-Audit-1.0-CP4BA.twx` - the same app bound to the Cloud Pak System Data
+     (`8.6.0.0_TC`) with `serverBaseURL` defaulting to the Studio loopback `https://localhost:9443/bas` (on a Process Server set it to
+     `https://localhost:9443/baw-<instance>`). After the import create one snapshot in the Studio and install / play back that one: an
+     imported generated snapshot carries no compiled theme and renders unstyled outside the branch tip. This build also imports on
+     traditional BAW 20.0.0.1 and later.
 2. Set the environment variables of the snapshot (below): the server base URL as seen from the server itself and the technical user the
    flows call the REST API with. The package ships no password.
 3. Expose the dashboard to a team (the package's default team holds `celladmin`; change it) and open it from Process Portal or the
@@ -24,6 +30,10 @@ server-side service flows calling the product REST API as a technical user) - no
 ## Environment variables
 
 `serverBaseURL`, `restAuthUser`, `restAuthPassword`, `restTrustAllCertificates` (kit-rest.js: the technical user every server-side flow calls the REST API with), `appTitle`.
+
+## Versions
+
+* **1.0-CP4BA** - new: the same version built for CP4BA (see Install); the traditional `Team-Audit-1.0.twx` is unchanged.
 
 ## Documents
 
